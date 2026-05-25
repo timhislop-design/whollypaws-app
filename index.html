@@ -3,448 +3,606 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WhollyPaws™ — Smart Pet Savings</title>
-  <meta name="description" content="WhollyPaws cross-compares pet food and supply prices filtered by your pet's breed, age, and ingredient sensitivities. Safe first, savings second. A Sentir Solutions® company." />
+  <title>WhollyPaws™ — Smart Pet Savings. Safe First.</title>
+  <meta name="description" content="WhollyPaws finds the best prices on pet food and supplies across every store you shop — filtered first by what's safe for your specific pet. Breed, age, allergens. Always safe before savings." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --dark:      #251208;
-      --mid:       #4A2210;
-      --light:     #7A3E18;
+      --dark:      #1E0E04;
+      --mid:       #3D2208;
+      --rich:      #5C3A0E;
+      --warm:      #7A4E1A;
       --accent:    #C47D2E;
       --accent-lt: #E0A86A;
-      --cta:       #E87C2A;
-      --cta-lt:    #F09A52;
-      --bg:        #FAF6F0;
+      --cta:       #C47D2E;
+      --cta-lt:    #D99040;
+      --bg:        #FAF7F2;
       --bg-alt:    #FFFFFF;
-      --border:    #E0CDB8;
+      --bg-warm:   #F5EFE4;
+      --border:    #DEC9A8;
+      --border-lt: #EDE0CC;
       --text:      #1E120A;
       --muted:     #6B5240;
-      --max:       1080px;
+      --muted-lt:  #9A8070;
+      --max:       1100px;
     }
-
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
     /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--dark);
-      padding: 0 2rem; height: 62px;
-      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    nav { position: sticky; top: 0; z-index: 100; background: var(--dark); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-paw {
+      width: 34px; height: 34px; flex-shrink: 0;
     }
-    .nav-logo {
-      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.05rem;
-      color: #FFFFFF; text-decoration: none; letter-spacing: 0.03em;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .logo-mark {
-      width: 28px; height: 28px; border-radius: 6px;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 700; color: #FFFFFF; line-height: 1;
-    }
-    .nav-links { display: flex; align-items: center; gap: 0.2rem; }
-    .nav-link {
-      font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none;
-      padding: 0.4rem 0.8rem; border-radius: 3px; transition: color 0.2s;
-      white-space: nowrap;
-    }
+    .nav-wordmark { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.15rem; color: #FFFFFF; letter-spacing: 0.01em; line-height: 1; }
+    .nav-wordmark sup { font-size: 0.6em; font-family: 'Inter', sans-serif; opacity: 0.7; vertical-align: super; }
+    .nav-links { display: flex; align-items: center; gap: 0; }
+    .nav-link { font-size: 0.82rem; color: rgba(255,255,255,0.55); text-decoration: none; padding: 0.4rem 0.9rem; border-radius: 3px; transition: color 0.2s; white-space: nowrap; }
     .nav-link:hover { color: #FFFFFF; }
     .nav-link.active { color: #FFFFFF; }
-    .nav-cta {
-      background: var(--cta); color: #FFFFFF; font-weight: 600;
-      padding: 0.45rem 1rem; margin-left: 0.4rem;
-    }
-    .nav-cta:hover { background: var(--cta-lt); color: #FFFFFF; }
-
-    /* ── LAYOUT ── */
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
-    section { padding: 5rem 2rem; }
-    section.alt { background: var(--bg-alt); }
+    .nav-waitlist { background: var(--accent); color: #FFFFFF; font-weight: 600; font-size: 0.82rem; padding: 0.5rem 1.1rem; border-radius: 4px; text-decoration: none; margin-left: 0.75rem; transition: background 0.2s; white-space: nowrap; }
+    .nav-waitlist:hover { background: var(--cta-lt); }
 
     /* ── HERO ── */
-    .hero {
-      background: linear-gradient(140deg, var(--dark) 0%, var(--mid) 55%, var(--light) 100%);
-      padding: 6rem 2rem 5rem; position: relative; overflow: hidden;
-    }
-    .hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 20px; padding: 5px 14px; margin-bottom: 1.75rem;
-    }
-    .hero-eyebrow span {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(255,255,255,0.85);
-    }
-    .hero-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--accent); display: block; flex-shrink: 0;
-    }
-    .hero h1 {
-      font-family: 'Fraunces', serif; font-weight: 300;
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      color: #FFFFFF; line-height: 1.15; margin-bottom: 1.25rem; max-width: 600px;
-    }
+    .hero { background: linear-gradient(150deg, var(--dark) 0%, var(--mid) 50%, var(--rich) 100%); padding: 5.5rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 85% 40%, rgba(196,125,46,0.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(196,125,46,0.15); border: 1px solid rgba(196,125,46,0.3); border-radius: 20px; padding: 5px 14px; margin-bottom: 1.5rem; }
+    .hero-eyebrow span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-lt); }
+    .hero h1 { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(2.1rem, 4vw, 3.2rem); color: #FFFFFF; line-height: 1.12; margin-bottom: 1.25rem; }
     .hero h1 em { font-style: italic; color: var(--accent-lt); }
-    .hero-sub {
-      font-size: 1.05rem; color: rgba(255,255,255,0.72);
-      max-width: 520px; line-height: 1.85; margin-bottom: 1.75rem;
-    }
-    .hero-tagline {
-      display: inline-block;
-      background: rgba(196,125,46,0.18); border: 1px solid rgba(196,125,46,0.35);
-      border-radius: 8px; padding: 10px 20px; margin-bottom: 2rem;
-    }
-    .hero-tagline span {
-      font-family: 'Fraunces', serif; font-style: italic;
-      font-size: 1.1rem; color: var(--accent-lt); font-weight: 300;
-    }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary {
-      display: inline-block; background: var(--cta); color: #FFFFFF;
-      text-decoration: none; font-size: 0.9rem; font-weight: 600;
-      padding: 13px 30px; border-radius: 6px; letter-spacing: 0.02em; transition: background 0.2s;
-    }
-    .btn-primary:hover { background: var(--cta-lt); }
-    .btn-ghost {
-      display: inline-block; background: rgba(255,255,255,0.09); color: #FFFFFF;
-      border: 1px solid rgba(255,255,255,0.22); text-decoration: none;
-      font-size: 0.9rem; padding: 13px 24px; border-radius: 6px; transition: background 0.2s;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.15); }
-
-    .hero-icon {
-      position: absolute; right: 6%; top: 50%; transform: translateY(-52%);
-      opacity: 0.09; pointer-events: none;
-    }
-
-    /* ── SECTION LABELS ── */
-    .section-label {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-family: 'Fraunces', serif; font-weight: 300;
-      font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--dark); line-height: 1.2;
-      margin-bottom: 0.5rem;
-    }
-    h2 em { font-style: italic; color: var(--light); }
-    .divider {
-      width: 48px; height: 2px; background: var(--accent);
-      margin: 1rem 0 1.5rem;
-    }
-    .lead {
-      font-size: 1rem; color: var(--muted); line-height: 1.85;
-      max-width: 600px; margin-bottom: 2.5rem;
-    }
-
-    /* ── CARD GRID ── */
-    .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
-    .four-col  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
-    .card {
-      background: var(--bg-alt); border: 1px solid var(--border);
-      border-top: 3px solid var(--accent); padding: 2rem;
-    }
-    .card.dark  { border-top-color: var(--dark); }
-    .card.mid   { border-top-color: var(--mid); }
-    .card.light { border-top-color: var(--light); }
-    .card-num {
-      font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 300;
-      color: var(--border); margin-bottom: 0.85rem;
-    }
-    .card h3 {
-      font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 600;
-      color: var(--dark); margin-bottom: 0.5rem; line-height: 1.3;
-    }
-    .card p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
-
-    /* ── PRICING CARDS ── */
-    .tier-name {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
-    }
-    .tier-price {
-      font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 300;
-      color: var(--dark); line-height: 1; margin-bottom: 0.25rem;
-    }
-    .tier-period { font-size: 0.78rem; color: #A89080; margin-bottom: 0.75rem; }
-    .tier-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
-
-    /* ── DARK CALLOUT ── */
-    .sincere-block {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);
-      border-radius: 4px; padding: 3rem;
-    }
-    .sincere-block .section-label { color: var(--accent-lt); margin-bottom: 1rem; }
-    .sincere-block h2 { color: #FFFFFF; }
-    .sincere-block h2 em { color: var(--accent-lt); }
-    .sincere-block .lead { color: rgba(255,255,255,0.65); max-width: 640px; }
-    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; }
-    .pill {
-      font-size: 0.82rem; color: rgba(255,255,255,0.78);
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
-      padding: 6px 14px; border-radius: 20px;
-    }
-
-    /* ── WAITLIST CTA ── */
-    .waitlist-block {
-      background: var(--bg-alt); border: 1px solid var(--border);
-      border-top: 3px solid var(--accent);
-      padding: 3rem; text-align: center;
-    }
-    .waitlist-block .section-label { margin-bottom: 0.75rem; }
-    .waitlist-block h2 { margin: 0 auto 0.75rem; }
-    .waitlist-block p { font-size: 0.95rem; color: var(--muted); max-width: 440px; margin: 0 auto 1.75rem; }
-    .btn-cta {
-      display: inline-block; background: var(--cta); color: #FFFFFF;
-      text-decoration: none; font-size: 0.9rem; font-weight: 600;
-      padding: 14px 36px; border-radius: 6px; transition: background 0.2s;
-    }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.68); max-width: 480px; line-height: 1.85; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-cta { display: inline-block; background: var(--accent); color: #FFFFFF; text-decoration: none; font-size: 0.9rem; font-weight: 600; padding: 13px 30px; border-radius: 5px; transition: background 0.2s; }
     .btn-cta:hover { background: var(--cta-lt); }
+    .btn-ghost { display: inline-block; background: transparent; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2); text-decoration: none; font-size: 0.88rem; padding: 12px 22px; border-radius: 5px; transition: all 0.2s; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: #FFFFFF; }
+    .hero-tagline { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-family: 'Fraunces', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.45); }
+
+    /* Hero card mockup */
+    .hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(4px); }
+    .hero-card-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-lt); margin-bottom: 1rem; }
+    .pet-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: rgba(255,255,255,0.06); border-radius: 8px; margin-bottom: 0.6rem; border: 1px solid rgba(255,255,255,0.07); }
+    .pet-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .pet-info { flex: 1; }
+    .pet-name { font-size: 0.85rem; font-weight: 600; color: #FFFFFF; line-height: 1.2; }
+    .pet-detail { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
+    .pet-badge { font-size: 0.68rem; font-weight: 600; padding: 3px 8px; border-radius: 10px; background: rgba(196,125,46,0.25); color: var(--accent-lt); border: 1px solid rgba(196,125,46,0.3); flex-shrink: 0; }
+    .pet-badge.safe { background: rgba(58,140,78,0.2); color: #7DD99A; border-color: rgba(58,140,78,0.3); }
+    .hero-card-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 1rem 0; }
+    .savings-row { display: flex; justify-content: space-between; align-items: center; }
+    .savings-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+    .savings-amount { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 300; color: var(--accent-lt); }
+    .savings-sub { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 0.2rem; }
+
+    /* ── STAT BAR ── */
+    .stat-bar { background: var(--mid); padding: 1.5rem 2rem; }
+    .stat-bar-inner { max-width: var(--max); margin: 0 auto; display: flex; gap: 0; }
+    .stat-item { flex: 1; text-align: center; padding: 0.5rem 1rem; position: relative; }
+    .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 15%; bottom: 15%; width: 1px; background: rgba(255,255,255,0.1); }
+    .stat-num { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 300; color: var(--accent-lt); line-height: 1.1; }
+    .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-top: 0.2rem; }
+
+    /* ── SECTIONS ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 2rem; }
+    section.on-white { background: var(--bg-alt); }
+    section.on-warm { background: var(--bg-warm); }
+    section.on-dark { background: var(--dark); }
+
+    .section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    .section-eyebrow.light { color: var(--accent-lt); }
+    h2 { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(1.65rem, 3vw, 2.35rem); color: var(--dark); line-height: 1.15; margin-bottom: 0.6rem; }
+    h2 em { font-style: italic; color: var(--warm); }
+    h2.light { color: #FFFFFF; }
+    h2.light em { color: var(--accent-lt); }
+    .rule { width: 44px; height: 2px; background: var(--accent); margin: 1rem 0 1.75rem; }
+    .rule.light { background: var(--accent-lt); }
+    .lead-text { font-size: 1rem; color: var(--muted); line-height: 1.9; max-width: 580px; margin-bottom: 2.5rem; }
+    .lead-text.light { color: rgba(255,255,255,0.6); }
+
+    /* ── FEATURE GRID ── */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .feature-card { background: var(--bg-alt); border: 1px solid var(--border-lt); padding: 2rem; position: relative; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .feature-card h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 400; color: var(--dark); margin-bottom: 0.5rem; line-height: 1.3; }
+    .feature-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── HOW IT WORKS ── */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 2.5rem; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 28px; left: calc(12.5% + 12px); right: calc(12.5% + 12px); height: 1px; background: var(--border); z-index: 0; }
+    .step { padding: 0 1.25rem; text-align: center; position: relative; z-index: 1; }
+    .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--bg-alt); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+    .step-num span { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 300; color: var(--accent); line-height: 1; }
+    .step h4 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 0.98rem; color: var(--dark); margin-bottom: 0.5rem; line-height: 1.3; }
+    .step p { font-size: 0.83rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── CONSTRAINT SECTION ── */
+    .constraint-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .constraint-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.75rem; }
+    .constraint-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .constraint-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(196,125,46,0.15); border: 1.5px solid var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .constraint-check svg { width: 11px; height: 11px; }
+    .constraint-text h4 { font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 0.2rem; }
+    .constraint-text p { font-size: 0.84rem; color: var(--muted); line-height: 1.7; }
+    .constraint-visual { background: var(--bg-warm); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; }
+    .cv-header { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-lt); margin-bottom: 1.25rem; }
+    .cv-row { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0.85rem; border-radius: 6px; margin-bottom: 0.5rem; font-size: 0.84rem; }
+    .cv-row.pass { background: rgba(58,140,78,0.08); border: 1px solid rgba(58,140,78,0.15); }
+    .cv-row.fail { background: rgba(200,50,50,0.06); border: 1px solid rgba(200,50,50,0.12); text-decoration-line: none; }
+    .cv-row-name { color: var(--text); font-weight: 500; }
+    .cv-row.fail .cv-row-name { color: var(--muted-lt); }
+    .cv-row-status { font-size: 0.72rem; font-weight: 600; }
+    .cv-row.pass .cv-row-status { color: #3A8C4E; }
+    .cv-row.fail .cv-row-status { color: #B84040; }
+    .cv-reason { font-size: 0.72rem; color: var(--muted-lt); margin-left: 0.5rem; }
+    .cv-price { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── PRICING ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .price-card { background: var(--bg-alt); border: 1px solid var(--border-lt); padding: 2rem; position: relative; }
+    .price-card.featured { border-color: var(--accent); box-shadow: 0 4px 24px rgba(196,125,46,0.14); }
+    .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--border); }
+    .price-card.featured::before { background: var(--accent); }
+    .price-tier { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-lt); margin-bottom: 0.85rem; }
+    .price-card.featured .price-tier { color: var(--accent); }
+    .price-amount { font-family: 'Fraunces', serif; font-size: 2.1rem; font-weight: 300; color: var(--dark); line-height: 1; }
+    .price-period { font-size: 0.78rem; color: var(--muted-lt); margin: 0.3rem 0 1rem; }
+    .price-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; padding-top: 1rem; border-top: 1px solid var(--border-lt); }
+    .price-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent); color: #FFFFFF; padding: 2px 8px; border-radius: 3px; margin-left: 0.5rem; vertical-align: middle; }
+
+    /* ── SINCERE STRATEGY ── */
+    .sincere-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); margin-top: 2.5rem; }
+    .sincere-item { padding: 2rem; background: rgba(255,255,255,0.03); }
+    .sincere-icon { font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .sincere-item h4 { font-size: 0.92rem; font-weight: 600; color: #FFFFFF; margin-bottom: 0.4rem; }
+    .sincere-item p { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
+
+    /* ── WAITLIST ── */
+    .waitlist-box { max-width: 620px; margin: 0 auto; text-align: center; }
+    .waitlist-box h2 { margin-bottom: 0.75rem; }
+    .waitlist-box p { font-size: 0.97rem; color: var(--muted); max-width: 440px; margin: 0 auto 2rem; line-height: 1.85; }
 
     /* ── FOOTER ── */
-    footer {
-      background: #110804; color: rgba(255,255,255,0.4);
-      padding: 2.5rem 2rem; text-align: center; font-size: 0.82rem;
-    }
-    footer a { color: var(--accent-lt); text-decoration: none; }
-    footer a:hover { color: #FFFFFF; }
-    footer p + p { margin-top: 0.4rem; }
+    footer { background: #100800; padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-top { display: flex; gap: 3rem; justify-content: space-between; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 1.75rem; }
+    .footer-brand .footer-wordmark { font-family: 'Fraunces', serif; font-weight: 400; font-size: 1.2rem; color: #FFFFFF; margin-bottom: 0.6rem; }
+    .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.75; max-width: 240px; }
+    .footer-col h5 { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.84rem; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--accent-lt); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+    .footer-sincere { font-size: 0.75rem; color: rgba(255,255,255,0.2); font-style: italic; }
 
     /* ── FADE-IN ── */
-    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
-    @media (max-width: 860px) {
-      .three-col, .four-col { grid-template-columns: 1fr; }
-      .hero-icon { display: none; }
-      nav { padding: 0 1rem; }
-      section { padding: 3.5rem 1.25rem; }
-      .sincere-block { padding: 2rem; }
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .steps::before { display: none; }
+      .constraint-split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .sincere-grid { grid-template-columns: 1fr; }
+      .footer-top { flex-direction: column; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
-    @media (max-width: 600px) {
-      .nav-links .nav-link:not(.nav-cta):not(.active) { display: none; }
+    @media (max-width: 640px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .stat-bar-inner { flex-wrap: wrap; }
+      nav { padding: 0 1rem; }
+      .nav-links .nav-link { display: none; }
+      .nav-links .nav-link.nav-waitlist { display: flex; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-logo" href="#">
-      <span class="logo-mark">P</span>
-      WhollyPaws™
-    </a>
-    <div class="nav-links">
-      <a href="#constraints" class="nav-link">Safe First</a>
-      <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="https://sentirsolutions.github.io/sentir-solutions-site/" class="nav-link" target="_blank" rel="noopener">Sentir Solutions</a>
-      <a href="mailto:tim.hislop@gmail.com?subject=WhollyPaws%20Waitlist" class="nav-link nav-cta">Join Waitlist →</a>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">
+    <svg class="nav-paw" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="24" cy="31" rx="11" ry="10" fill="#C47D2E"/>
+      <ellipse cx="11" cy="20" rx="4.5" ry="6" fill="#C47D2E" opacity="0.8"/>
+      <ellipse cx="19" cy="14.5" rx="4.5" ry="6" fill="#C47D2E" opacity="0.8"/>
+      <ellipse cx="29" cy="14.5" rx="4.5" ry="6" fill="#C47D2E" opacity="0.8"/>
+      <ellipse cx="37" cy="20" rx="4.5" ry="6" fill="#C47D2E" opacity="0.8"/>
+    </svg>
+    <span class="nav-wordmark">WhollyPaws<sup>™</sup></span>
+  </a>
+  <div class="nav-links">
+    <a href="#how-it-works" class="nav-link">How It Works</a>
+    <a href="#safe-first" class="nav-link">Safe First</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="https://sentirsolutions.github.io/sentir-solutions-site/" class="nav-link" target="_blank" rel="noopener">Sentir Solutions</a>
+    <a href="mailto:tim.hislop@gmail.com?subject=WhollyPaws%20Waitlist" class="nav-link nav-waitlist">Join Waitlist →</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-
-      <svg class="hero-icon" width="320" height="320" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="24" cy="31" rx="11" ry="10" fill="white"/>
-        <ellipse cx="11" cy="20" rx="5" ry="6.5" fill="white"/>
-        <ellipse cx="19" cy="14" rx="5" ry="6.5" fill="white"/>
-        <ellipse cx="29" cy="14" rx="5" ry="6.5" fill="white"/>
-        <ellipse cx="37" cy="20" rx="5" ry="6.5" fill="white"/>
-      </svg>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
       <div class="hero-eyebrow">
-        <span class="hero-dot"></span>
-        <span>Pet price intelligence &nbsp;·&nbsp; A Sentir Solutions® brand</span>
+        <span>Pet price intelligence &nbsp;·&nbsp; Safe before savings</span>
       </div>
-
-      <h1>Your pet has needs.<br />WhollyPaws makes sure<br /><em>savings never override them.</em></h1>
-
-      <p class="hero-sub">
-        WhollyPaws cross-compares pet food, treats, and supply prices across Chewy,
-        PetSmart, Petco, and Tractor Supply — filtered by your pet's species, breed,
-        age, and ingredient sensitivities. Safe first. Savings second.
-      </p>
-
-      <div class="hero-tagline">
-        <span>The four-legged life plan that pays you back.</span>
-      </div>
-
+      <h1>Your pet has needs.<br />Savings can never<br /><em>override them.</em></h1>
+      <p class="hero-sub">WhollyPaws finds the best prices on pet food and supplies across every store you actually shop — filtered first by what's safe for your specific pet. Breed. Age. Allergens. Vet restrictions. Always safe before savings.</p>
       <div class="hero-actions">
-        <a href="mailto:tim.hislop@gmail.com?subject=WhollyPaws%20Waitlist" class="btn-primary">Join the Waitlist →</a>
-        <a href="https://sentirsolutions.github.io/sentir-solutions-site/" class="btn-ghost" target="_blank" rel="noopener">About Sentir Solutions</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PET CONSTRAINTS -->
-  <section id="constraints" class="alt">
-    <div class="container">
-      <p class="section-label fade-in">The Constraint Engine</p>
-      <h2 class="fade-in">Pets have allergens too.<br /><em>We take them seriously.</em></h2>
-      <div class="divider fade-in"></div>
-      <p class="lead fade-in">WhollyPaws runs pet-specific constraints before the price optimizer — just like WhollyFare does for human households. What's unsafe never reaches your list, at any price.</p>
-
-      <div class="three-col">
-        <div class="card dark fade-in">
-          <h3>Species &amp; Breed</h3>
-          <p>Dog vs. cat vs. small animal. Breed-appropriate formulas. Size and weight class. Large-breed puppy calcium ratios. Breed sensitivities — Westies, Bulldogs, and others — handled as hard constraints.</p>
-        </div>
-        <div class="card mid fade-in">
-          <h3>Ingredient Filters</h3>
-          <p>Grain-free, chicken-free, fish-free, beef-free. No corn, wheat, or soy. Single-protein. Limited ingredient. All run as hard rules — never traded for a better price. A cheaper bag that harms your pet isn't savings.</p>
-        </div>
-        <div class="card fade-in">
-          <h3>Life Stage</h3>
-          <p>Puppy, adult, senior. Kitten, adult cat, senior cat. Prescription diet flags. Dental health formulas. The right food for where your pet is in life — not just the cheapest option in the aisle.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section>
-    <div class="container">
-      <p class="section-label fade-in">How It Works</p>
-      <h2 class="fade-in">Safe first.<br /><em>Savings second.</em></h2>
-      <div class="divider fade-in"></div>
-
-      <div class="four-col">
-        <div class="card dark fade-in">
-          <div class="card-num">01</div>
-          <h3>Set up your pet</h3>
-          <p>Species, breed, age, weight, and any ingredient sensitivities or vet-prescribed restrictions. Your pet's profile is the constraint engine's input.</p>
-        </div>
-        <div class="card mid fade-in">
-          <div class="card-num">02</div>
-          <h3>We filter first</h3>
-          <p>The constraint engine removes anything that doesn't fit your pet's profile — before prices are ever compared. No unsafe product reaches your list.</p>
-        </div>
-        <div class="card fade-in">
-          <div class="card-num">03</div>
-          <h3>Cross-store pricing</h3>
-          <p>What's left is cross-compared across Chewy, PetSmart, Petco, and Tractor Supply — by unit weight, not bag size. Honest apples-to-apples.</p>
-        </div>
-        <div class="card light fade-in">
-          <div class="card-num">04</div>
-          <h3>Your savings list</h3>
-          <p>One list, per store, with net Found Money shown — delivery fees or gas costs included. The number in your pocket.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing" class="alt">
-    <div class="container">
-      <p class="section-label fade-in">Pricing</p>
-      <h2 class="fade-in">Start free.<br /><em>Stay honest.</em></h2>
-      <div class="divider fade-in"></div>
-      <p class="lead fade-in">No ads. No affiliate deals. No data sales. Revenue is subscriptions only.</p>
-
-      <div class="four-col">
-        <div class="card fade-in">
-          <p class="tier-name">Price Finder</p>
-          <div class="tier-price">Free</div>
-          <p class="tier-period">always</p>
-          <p class="tier-desc">Cross-store unit-price comparison for pet food and supplies. Always free.</p>
-        </div>
-        <div class="card fade-in">
-          <p class="tier-name">Paws Tracker</p>
-          <div class="tier-price">$5<span style="font-size:1rem;">/mo</span></div>
-          <p class="tier-period">per household</p>
-          <p class="tier-desc">Auto-track your regular brands. Buy-off alerts when your pet's food goes on sale.</p>
-        </div>
-        <div class="card fade-in">
-          <p class="tier-name">Health Guard</p>
-          <div class="tier-price">$12<span style="font-size:1rem;">/mo</span></div>
-          <p class="tier-period">per household</p>
-          <p class="tier-desc">Hard constraint engine — breed, ingredient, and life-stage filters. Safety before savings, always.</p>
-        </div>
-        <div class="card fade-in">
-          <p class="tier-name">Full Paws</p>
-          <div class="tier-price">$19<span style="font-size:1rem;">/mo</span></div>
-          <p class="tier-period">per household</p>
-          <p class="tier-desc">Multi-pet profiles, supply history, vet diet tracking, and Chewy Autoship optimizer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SINCERE STRATEGY -->
-  <section>
-    <div class="container">
-      <div class="sincere-block fade-in">
-        <p class="section-label">The Sincere Strategy®</p>
-        <h2>No brand can pay to appear<br />in your pet's food plan.<br /><em>Not one. Ever.</em></h2>
-        <p class="lead">
-          Pet food is a $50B+ industry, and most "recommendation" engines are funded by the brands they recommend. WhollyPaws isn't. Our only incentive is to find what's safe and affordable for your specific pet. That's the asymmetry. It's structural and it's durable.
-        </p>
-        <div class="pills">
-          <span class="pill">Zero paid placements — ever</span>
-          <span class="pill">Health &amp; ingredient filters are hard rules</span>
-          <span class="pill">Net savings shown — delivery fees included</span>
-          <span class="pill">Your pet data is never sold or targeted</span>
-          <span class="pill">Subscription-only revenue</span>
-        </div>
-        <p style="color:rgba(255,255,255,0.35);font-size:0.8rem;margin-top:2rem;">
-          A <a href="https://sentirsolutions.github.io/sentir-solutions-site/" target="_blank" rel="noopener" style="color:var(--accent-lt);">Sentir Solutions®</a> company &nbsp;·&nbsp; wholly-paws.com &nbsp;·&nbsp; Coming 2026
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAITLIST -->
-  <section class="alt">
-    <div class="container">
-      <div class="waitlist-block fade-in">
-        <p class="section-label">Coming Soon — 2026</p>
-        <h2>Be first to know<br /><em>when WhollyPaws launches.</em></h2>
-        <p>We're building WhollyPaws after WhollyFare and WhollyWare prove the Sincere Strategy platform. Join the waitlist and we'll reach out when your area goes live.</p>
         <a href="mailto:tim.hislop@gmail.com?subject=WhollyPaws%20Waitlist" class="btn-cta">Join the Waitlist →</a>
+        <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+      </div>
+      <p class="hero-tagline">The four-legged life plan that pays you back.</p>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-label">Your Pets This Week</div>
+
+      <div class="pet-row">
+        <div class="pet-icon">🐕</div>
+        <div class="pet-info">
+          <div class="pet-name">Max — Golden Retriever, 4yr</div>
+          <div class="pet-detail">Grain-free · Chicken-free · Hip support</div>
+        </div>
+        <div class="pet-badge safe">✓ Safe</div>
+      </div>
+
+      <div class="pet-row">
+        <div class="pet-icon">🐈</div>
+        <div class="pet-info">
+          <div class="pet-name">Luna — DSH Cat, 2yr</div>
+          <div class="pet-detail">Indoor · Weight management · Fish-free</div>
+        </div>
+        <div class="pet-badge safe">✓ Safe</div>
+      </div>
+
+      <div class="pet-row">
+        <div class="pet-icon">🐕‍🦺</div>
+        <div class="pet-info">
+          <div class="pet-name">Biscuit — Poodle Mix, 12yr</div>
+          <div class="pet-detail">Senior · Low-sodium · Joint support</div>
+        </div>
+        <div class="pet-badge">⚠ Review</div>
+      </div>
+
+      <div class="hero-card-divider"></div>
+
+      <div class="savings-row">
+        <div>
+          <div class="savings-label">Found Money this week</div>
+          <div class="savings-sub">vs. single-store, after delivery</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="savings-amount">$28.40</div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p>
-        <strong style="color:#FFFFFF;">WhollyPaws™</strong> &nbsp;·&nbsp;
-        A <a href="https://sentirsolutions.github.io/sentir-solutions-site/" target="_blank" rel="noopener">Sentir Solutions®</a> Company &nbsp;·&nbsp;
-        Charlottesville, Virginia
-      </p>
-      <p>
-        <a href="https://sentirsolutions.github.io/sentir-solutions-site/mission.html" target="_blank" rel="noopener">The Sincere Strategy®</a> &nbsp;·&nbsp;
-        <a href="https://whollyfare-website-whlrpy4dnreymq3gbjjkup.streamlit.app" target="_blank" rel="noopener">WhollyFare® ↗</a> &nbsp;·&nbsp;
-        <a href="mailto:tim.hislop@gmail.com">tim.hislop@gmail.com</a>
-      </p>
-      <p style="margin-top:0.5rem;opacity:0.4;">Zero paid placements &nbsp;·&nbsp; Revenue is subscriptions only</p>
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Stores cross-compared</div>
     </div>
-  </footer>
+    <div class="stat-item">
+      <div class="stat-num">Safe first</div>
+      <div class="stat-label">Constraint engine, always</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Paid placements, ever</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Net</div>
+      <div class="stat-label">Savings after delivery &amp; gas</div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
-      { threshold: 0.08 }
-    );
-    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-  </script>
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="on-white">
+  <div class="container">
+    <p class="section-eyebrow fade-in">How It Works</p>
+    <h2 class="fade-in">Four steps. Safe first,<br /><em>savings always second.</em></h2>
+    <div class="rule fade-in"></div>
+    <p class="lead-text fade-in">WhollyPaws runs your pet's profile through a constraint engine before a single price is compared. Anything that fails your pet's profile is removed entirely — not deprioritized. Gone.</p>
 
+    <div class="steps fade-in">
+      <div class="step">
+        <div class="step-num"><span>01</span></div>
+        <h4>Set up each pet</h4>
+        <p>Species, breed, age, weight, health conditions, and any ingredient restrictions or vet-prescribed diet flags. This is the constraint engine's input.</p>
+      </div>
+      <div class="step">
+        <div class="step-num"><span>02</span></div>
+        <h4>We filter first</h4>
+        <p>Every product across every store is checked against your pet's profile. Unsafe products are removed before any price comparison runs. Not ranked lower — removed.</p>
+      </div>
+      <div class="step">
+        <div class="step-num"><span>03</span></div>
+        <h4>Cross-store pricing</h4>
+        <p>What passes is compared across Chewy, PetSmart, Petco, and Tractor Supply — by unit weight, not bag size. Honest apples-to-apples comparison.</p>
+      </div>
+      <div class="step">
+        <div class="step-num"><span>04</span></div>
+        <h4>Your savings list</h4>
+        <p>One list, organized by store, with net Found Money shown after delivery fees or gas costs. The number in your pocket — never the flattering gross.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="container">
+    <p class="section-eyebrow fade-in">What WhollyPaws Does</p>
+    <h2 class="fade-in">Built for how pets<br /><em>actually eat and live.</em></h2>
+    <div class="rule fade-in"></div>
+
+    <div class="feature-grid fade-in">
+      <div class="feature-card">
+        <div class="feature-icon">🐾</div>
+        <h3>Multi-pet household support</h3>
+        <p>Manage dogs, cats, rabbits, and more in one household. Each pet has its own profile and constraint set. Mixed-pet households work exactly as you'd expect.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌾</div>
+        <h3>Ingredient constraint engine</h3>
+        <p>Grain-free, chicken-free, fish-free, beef-free, corn/wheat/soy-free, single-protein, limited ingredient. Every flag is a hard rule that removes products — not a filter preference.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Vet diet &amp; prescription flags</h3>
+        <p>Log prescription diet requirements directly. WhollyPaws surfaces appropriate options and flags anything that conflicts with vet-prescribed nutrition targets.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <h3>Unit weight comparison</h3>
+        <p>Prices compared per pound or per ounce — not per bag. A 30lb bag vs. a 12lb bag vs. a 40lb bag all reduce to the same unit cost so you're comparing honestly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚚</div>
+        <h3>Delivery vs. in-store math</h3>
+        <p>Chewy Autoship savings, PetSmart Repeat Delivery discounts, and in-store gas costs are all factored in. You see the real number — not the number that flatters the recommendation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Found Money ledger</h3>
+        <p>Every week's savings tracked over time. See your cumulative Found Money, your best weeks, and how much the constraint engine has saved you by keeping unsafe products off your list.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTRAINT ENGINE DETAIL -->
+<section id="safe-first" class="on-warm">
+  <div class="container">
+    <div class="constraint-split">
+      <div class="fade-in">
+        <p class="section-eyebrow">Safe First — Always</p>
+        <h2>The constraint engine<br /><em>runs before the optimizer.</em></h2>
+        <div class="rule"></div>
+        <p class="lead-text">Most pet food comparison tools show you price, then let you filter. WhollyPaws does it the other way around — constraints run first, prices second. A cheaper bag that's wrong for your pet isn't savings. It's a vet bill.</p>
+
+        <div class="constraint-list">
+          <div class="constraint-item">
+            <div class="constraint-check">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C47D2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="constraint-text">
+              <h4>Breed-specific constraints</h4>
+              <p>Large-breed calcium ratios, Westie skin sensitivities, Bulldog breathing-safe formulas, and hundreds of breed-specific flags built in and updateable.</p>
+            </div>
+          </div>
+          <div class="constraint-item">
+            <div class="constraint-check">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C47D2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="constraint-text">
+              <h4>Life stage matching</h4>
+              <p>Puppy, adult, senior. Kitten, adult cat. Each has different nutritional requirements — WhollyPaws enforces them, not just suggests them.</p>
+            </div>
+          </div>
+          <div class="constraint-item">
+            <div class="constraint-check">
+              <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#C47D2E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="constraint-text">
+              <h4>Ingredient rejection logging</h4>
+              <p>Every product removed is logged with the reason. You see exactly what was filtered and why — radical transparency from the Sincere Strategy®.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <div class="constraint-visual">
+          <div class="cv-header">Filtering for Max — Chicken-free, Grain-free, Hip support</div>
+
+          <div class="cv-row pass">
+            <div>
+              <div class="cv-row-name">Merrick Grain Free Real Duck</div>
+              <div class="cv-price" style="font-size:0.75rem;color:var(--muted-lt);margin-top:2px;">$2.18/lb · Chewy Autoship</div>
+            </div>
+            <div class="cv-row-status">✓ Passes</div>
+          </div>
+
+          <div class="cv-row pass">
+            <div>
+              <div class="cv-row-name">Taste of the Wild Pacific Stream</div>
+              <div class="cv-price" style="font-size:0.75rem;color:var(--muted-lt);margin-top:2px;">$2.31/lb · PetSmart</div>
+            </div>
+            <div class="cv-row-status">✓ Passes</div>
+          </div>
+
+          <div class="cv-row fail">
+            <div>
+              <div class="cv-row-name">Purina Pro Plan Chicken &amp; Rice</div>
+              <div style="font-size:0.73rem;color:#B84040;margin-top:2px;">Removed: contains chicken · contains rice (grain)</div>
+            </div>
+            <div class="cv-row-status">✗ Removed</div>
+          </div>
+
+          <div class="cv-row fail">
+            <div>
+              <div class="cv-row-name">Hill's Science Diet Adult</div>
+              <div style="font-size:0.73rem;color:#B84040;margin-top:2px;">Removed: contains chicken · contains corn</div>
+            </div>
+            <div class="cv-row-status">✗ Removed</div>
+          </div>
+
+          <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border-lt);">
+            <div style="font-size:0.75rem;color:var(--muted-lt);">2 products pass Max's profile · 2 removed · Savings: <strong style="color:var(--accent);">$0.13/lb</strong> vs. single store</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="on-white">
+  <div class="container">
+    <p class="section-eyebrow fade-in">Pricing</p>
+    <h2 class="fade-in">Start free. Stay<br /><em>as your pet's needs grow.</em></h2>
+    <div class="rule fade-in"></div>
+    <p class="lead-text fade-in">No ads. No affiliate deals. No brand can pay to appear in your pet's food plan. Revenue is subscriptions only — the Sincere Strategy® in practice.</p>
+
+    <div class="pricing-grid fade-in">
+      <div class="price-card">
+        <div class="price-tier">Price Finder</div>
+        <div class="price-amount">Free</div>
+        <div class="price-period">always, no card needed</div>
+        <div class="price-desc">Cross-store price comparison for pet food and supplies. Weekly sale alerts. Always free, no time limit.</div>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Paws Tracker</div>
+        <div class="price-amount">$5<span style="font-size:1.1rem;font-family:'Inter',sans-serif;">/mo</span></div>
+        <div class="price-period">per household</div>
+        <div class="price-desc">Auto-track your regular brands. Buy-off alerts when your pet's food goes on sale. Up to 2 pets.</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Health Guard <span class="price-badge">Popular</span></div>
+        <div class="price-amount">$12<span style="font-size:1.1rem;font-family:'Inter',sans-serif;">/mo</span></div>
+        <div class="price-period">per household</div>
+        <div class="price-desc">Full constraint engine — breed, ingredient, life-stage, and vet diet filters. Safety before savings, always. Up to 4 pets.</div>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Full Paws</div>
+        <div class="price-amount">$19<span style="font-size:1.1rem;font-family:'Inter',sans-serif;">/mo</span></div>
+        <div class="price-period">per household</div>
+        <div class="price-desc">Unlimited pets. Full product history, vet diet tracking, prescription flag management, Chewy Autoship optimizer, and Found Money ledger.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SINCERE STRATEGY -->
+<section class="on-dark">
+  <div class="container">
+    <p class="section-eyebrow light fade-in">The Sincere Strategy®</p>
+    <h2 class="light fade-in">No pet food brand can pay<br />to appear in your plan.<br /><em>Not one. Ever.</em></h2>
+    <div class="rule light fade-in"></div>
+    <p class="lead-text light fade-in">The pet food industry is a $50B+ market built largely on sponsored recommendations, affiliate commissions, and paid placements. WhollyPaws is funded exclusively by the households it serves — which means our only incentive is to find what's genuinely best for your pet at the best honest price.</p>
+
+    <div class="sincere-grid fade-in">
+      <div class="sincere-item">
+        <div class="sincere-icon">🚫</div>
+        <h4>Zero paid placements. Ever.</h4>
+        <p>No brand can pay to appear in a WhollyPaws recommendation, comparison, or plan — at any price. This is a founding operating constraint, not a policy we can revisit.</p>
+      </div>
+      <div class="sincere-item">
+        <div class="sincere-icon">🛡️</div>
+        <h4>Safety is a hard rule, not a filter.</h4>
+        <p>Ingredient constraints, breed restrictions, and vet diet flags are absolute. They run before the price optimizer. A cheaper bag that's wrong for your pet is never shown.</p>
+      </div>
+      <div class="sincere-item">
+        <div class="sincere-icon">👁️</div>
+        <h4>Radical transparency.</h4>
+        <p>Every product removed by the constraint engine is logged and shown to you, with the exact reason. No black boxes. You see exactly what we filtered and why.</p>
+      </div>
+      <div class="sincere-item">
+        <div class="sincere-icon">🔒</div>
+        <h4>Your pet data is yours.</h4>
+        <p>We know your pet's breed, health conditions, dietary restrictions, and spending habits. That data is never sold, shared, or used for targeting. It stays with you.</p>
+      </div>
+    </div>
+
+    <p style="color:rgba(255,255,255,0.25);font-size:0.8rem;margin-top:2.5rem;text-align:center;">
+      A <a href="https://sentirsolutions.github.io/sentir-solutions-site/" target="_blank" rel="noopener" style="color:var(--accent-lt);text-decoration:none;">Sentir Solutions®</a> company &nbsp;·&nbsp; wholly-paws.com &nbsp;·&nbsp; Charlottesville, Virginia
+    </p>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="on-white">
+  <div class="container">
+    <div class="waitlist-box fade-in">
+      <p class="section-eyebrow" style="text-align:center;">Coming 2026</p>
+      <h2>Be first when<br /><em>WhollyPaws goes live.</em></h2>
+      <div class="rule" style="margin:1rem auto 1.75rem;"></div>
+      <p>We're building WhollyPaws after WhollyFare and WhollyWare prove the platform. Join the waitlist and we'll reach out when your area is live — no spam, just one email when it's ready.</p>
+      <a href="mailto:tim.hislop@gmail.com?subject=WhollyPaws%20Waitlist" class="btn-cta" style="font-size:0.95rem;padding:14px 36px;">Join the Waitlist →</a>
+      <p style="margin-top:1.25rem;font-size:0.8rem;color:var(--muted-lt);">While you wait — <a href="https://whollyfare-website-whlrpy4dnreymq3gbjjkup.streamlit.app" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">try WhollyFare®</a>, the live Sincere Strategy product for grocery savings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-wordmark">WhollyPaws™</div>
+        <p>Constraint-first pet price intelligence. Safe before savings, always. A Sentir Solutions® company.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#safe-first">Safe First</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h5>Wholly Platform</h5>
+        <a href="https://whollyfare-website-whlrpy4dnreymq3gbjjkup.streamlit.app" target="_blank" rel="noopener">WhollyFare® — Live ↗</a>
+        <a href="https://timhislop-design.github.io/whollyware-app/" target="_blank" rel="noopener">WhollyWare™</a>
+        <a href="https://timhislop-design.github.io/whollycare-app/" target="_blank" rel="noopener">WhollyCare™</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="https://sentirsolutions.github.io/sentir-solutions-site/" target="_blank" rel="noopener">Sentir Solutions®</a>
+        <a href="https://sentirsolutions.github.io/sentir-solutions-site/mission.html" target="_blank" rel="noopener">The Sincere Strategy®</a>
+        <a href="https://sentir-consulting.com" target="_blank" rel="noopener">Sentir Consulting ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 WhollyPaws™ · Sentir Solutions® LLC · Charlottesville, Virginia · <a href="mailto:tim.hislop@gmail.com" style="color:rgba(255,255,255,0.3);text-decoration:none;">tim.hislop@gmail.com</a></span>
+      <span class="footer-sincere">The Sincere Strategy® · Zero paid placements · Revenue is subscriptions only</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+    { threshold: 0.07 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
